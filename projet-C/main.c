@@ -31,29 +31,76 @@ void listeMains() {
                             }
 
 }
-//Determiner carre
-void carre(char* main) {
-    int cdt= 1;
-    while (cdt==1) {
-        if(main[0]==main[2]){
-            if(main[2]==main[4]) {
-                if(main[4]==main[6]){
-                    char resultCarre[3] = {"8%i%i",main[6],main[8]};
-                    cdt=0;
-                    
-                }
-                else if (main[4]==main[8]){
-                  char resultCarre[3] = {"8%i%i",main[8],main[6]};
-                cdt=0;
-                }
-                
-                else char resultCarre[]= {""};
-                
+// fonction cartes différentes
+int diff(char* main){
+    if (main[0]!= main[2] && main[0] != main[4] && main[0] != main[6] && main[0] != main[8] && main[2] != main[4] && main[2] != main[6] && main[2] != main[8] && main[4] != main[6] && main[4] != main[8] && main[6] != main[8]) {
+        return 1;
+    }
+    else return 0;
+    
+}
 
+
+
+//fonction flush 
+char flush(char* main){
+    char resultFlush[6]="";
+        if(main[1]==main[3] && main[3]==main[5] && main[5]==main[7] && main[7]==main[9] ) {
+                 //verifier si on ramene seulement la carte, ou aussi  la couleur (p,q,k,l,m)
+             sprintf(resultFlush,"6%i%i%i%i%i", main[0],main[2],main[4],main[6],main[8]);
         }
+    return resultFlush;
+}
+
+//fonction quinte
+char quinte(char* main){
+    if(strcmp(diff(main),1)){
+        if(strcmp(flush(main)," ")){
+            
+        }
+        
     }
     
 }
+
+/*//Determiner quinteFlush : vérifie seulement le cas ou quinteflush =ABCDE
+ char quinteFlush(char* main){
+ int cdt= 1;
+ while (cdt==1) {
+ //verification chaque carte differente
+ if (){
+ //verification couleur
+ if(!strcmp(flush(main,""))) {
+ 
+ //verification cartes ABCDE
+ if(main[0]=="A" or main[0]=="B" or main[0]=="D" or main[0]=="C" or main[0]=="E") {
+ if(main[2]=="A" or main[2]=="B" or main[2]=="D" or main[2]=="C" or main[2]=="E") {
+ if(main[4]=="A" or main[4]=="B" or main[4]=="D" or main[4]=="C" or main[4]=="E" ) {
+ if(main[6]=="A" or main[6]=="B" or main[6]=="D" or main[6]=="C" or main[6]=="E") {
+ if(main[8]=="A" or main[8]=="B" or main[8]=="D" or main[8]=="C" or main[8]=="E") {
+ char resultQuinteFlush[6]={"9E"};
+ }
+ else resultQuinteFlush[6]="";
+ }
+ else resultQuinteFlush[6]="";
+ }
+ else resultQuinteFlush[6]="";
+ }
+ else resultQuinteFlush[6]="";
+ }
+ else resultQuinteFlush[6]="";
+ }
+ else resultQuinteFlush[6]="";
+ 
+ }
+ else resultQuinteFlush[6]="";
+ }
+ return resultQuinteFlush;
+ }
+ */
+
+
+
 
 
 //calculer la force
